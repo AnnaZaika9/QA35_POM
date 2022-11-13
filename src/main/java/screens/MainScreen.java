@@ -11,8 +11,25 @@ public class MainScreen extends BaseScreen{
     @FindBy(xpath = "//*[@resource-id='org.wikipedia:id/view_card_header_title']")
     MobileElement detailView;
 
+    @FindBy(xpath = "//*[@class='android.widget.TextView']")
+    MobileElement searchButton;
+    @FindBy(xpath = "//*[@resource-id='org.wikipedia:id/menu_overflow_button']")
+    MobileElement flowButton;
+
+
+
     public String getDetail() {
         return detailView.getText();
     }
 
+    public SearchScreen clickOnTheSearchFromMainPage() {
+        searchButton.click();
+        return new SearchScreen(driver);
+    }
+
+    public TooltipScreen clickOnFlowButton() {
+        should(flowButton,40);
+        flowButton.click();
+        return new TooltipScreen(driver);
+    }
 }
